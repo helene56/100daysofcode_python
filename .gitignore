@@ -1,2 +1,7 @@
-day54/hello_flask/venv/
-day54/hello_flask/__pycache__/
+# Ignore venv directories
+**/venv/
+
+# Other ignore rules
+*.pyc
+__pycache__/
+
