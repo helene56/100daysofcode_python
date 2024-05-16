@@ -8,21 +8,30 @@ app = Flask(__name__)
 
 def make_bold(function):
     def wrapper():
-        print(f"<b>{function()}</b>")
         return f"<b>{function()}</b>"
     return wrapper
 
+def make_emphasis(function):
+    def wrapper():
+        return f"<em>{function()}</em>"
+    return wrapper
 
+def make_underlined(function):
+    def wrapper():
+        return f"<u>{function()}</u>"
+    return wrapper
 
 @app.route("/") # declaring that this is the homepage
 def hello_world():
     return '<h1 style="text-align: center">Hello, World!</h1>\
-        <p>this is a paragraph</p>\
+        <p>feed me</p>\
         <iframe src="https://giphy.com/embed/K1tgb1IUeBOgw" width="480" height="278" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>'
 
 
 @app.route("/bye") # when accesing url/bye the page will display "Bye"
 @make_bold # before making the route it should apply the make_bold decorator
+@make_underlined
+@make_emphasis
 def say_bye():
     return "Bye"
 
